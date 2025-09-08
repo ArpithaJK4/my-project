@@ -1,0 +1,48 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  annotations:
+    meta.helm.sh/release-name: digitalid-backend
+    meta.helm.sh/release-namespace: digitalid
+  creationTimestamp: '2025-09-04T12:57:59Z'
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  managedFields:
+    - apiVersion: networking.istio.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/managed-by: {}
+        f:spec:
+          .: {}
+          f:gateways: {}
+          f:hosts: {}
+          f:http: {}
+      manager: helm
+      operation: Update
+      time: '2025-09-04T12:57:59Z'
+  name: digitalid-virtualservice
+  namespace: digitalid
+  resourceVersion: '4102473'
+  uid: 12af88d6-1f9a-473b-9dbf-05d08aa20579
+spec:
+  gateways:
+    - digitalid-gateway
+  hosts:
+    - id.digital.credissuer.com
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: digitalid-backend.digitalid.svc.cluster.local
+            port:
+              number: 8000

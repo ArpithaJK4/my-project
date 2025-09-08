@@ -1,0 +1,74 @@
+# Number of replicas
+replicaCount: 1
+
+# Namespace for deployment
+namespace: digitalid
+
+# Container image configuration
+image:
+  repository: nandeesh756/digital-id-api
+  tag: v1.0.0
+  pullPolicy: IfNotPresent
+
+# ServiceAccount configuration
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+# Kubernetes Service
+service:
+  name: digitalid-backend
+  type: ClusterIP
+  port: 8000
+
+# Environment variables for the container
+env:
+  DB_NAME: postgres
+  DB_USER: postgres
+  DB_PASSWORD: FgQZ7z3Ci5
+  DB_HOST: postgres.digital.credissuer.com
+  DB_PORT: "5432"
+
+# Pod labels
+labels:
+  app: digitalid-backend
+
+# Pod annotations
+annotations:
+  cni.projectcalico.org/containerID: example-container
+  cni.projectcalico.org/podIP: 10.42.99.141/32
+  cni.projectcalico.org/podIPs: 10.42.99.141/32
+
+# Istio Gateway configuration (test)
+gateway:
+  name: digitalid-gateway
+  selector: ingressgateway-internal
+  host: id.digital.credissuer.com
+
+# Istio VirtualService configuration (test)
+virtualservice:
+  name: digitalid-virtualservice
+
+# Ingress configuration
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+# Horizontal Pod Autoscaler (HPA) configuration
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+# Resource requests and limits
+resources: {}

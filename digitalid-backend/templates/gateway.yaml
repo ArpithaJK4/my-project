@@ -1,0 +1,45 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  annotations:
+    meta.helm.sh/release-name: digitalid-backend
+    meta.helm.sh/release-namespace: digitalid
+  creationTimestamp: '2025-09-04T12:57:58Z'
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  managedFields:
+    - apiVersion: networking.istio.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/managed-by: {}
+        f:spec:
+          .: {}
+          f:selector:
+            .: {}
+            f:istio: {}
+          f:servers: {}
+      manager: helm
+      operation: Update
+      time: '2025-09-04T12:57:58Z'
+  name: digitalid-gateway
+  namespace: digitalid
+  resourceVersion: '4102471'
+  uid: 2af699cf-fd66-419b-8bb1-53ad72cdd2ad
+spec:
+  selector:
+    istio: ingressgateway-internal
+  servers:
+    - hosts:
+        - id.digital.credissuer.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
