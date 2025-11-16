@@ -1,0 +1,25 @@
+{
+  "name": "jobAppliesAutomation",
+  "version": "1.0.0",
+  "description": "job automation",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulf": "node --env-file=.env gulf/index.js",
+    "naukari": "node --env-file=.env naukari/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sonusinghmaurya/jobAppliesAutomation.git"
+  },
+  "keywords": [
+    "job"
+  ],
+  "author": "Sonu",
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "puppeteer": "^23.11.1"
+  }
+}
