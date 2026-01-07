@@ -1,0 +1,10 @@
+services:
+  flask-proxy:
+    build: .
+    container_name: flask-proxy
+    network_mode: "host"       # still use host network
+    dns:
+      - 10.10.0.1             # WireGuard DNS
+    env_file:
+      - .env
+    restart: unless-stopped
