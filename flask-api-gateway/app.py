@@ -111,7 +111,6 @@ def post_submission():
             if resp.status_code >= 400:
                 return Response(resp.content, status=resp.status_code)
 
-            # Extract instanceID from XML
             import re
             xml_content = xml_file[1].decode("utf-8")
             instance_match = re.search(r"<instanceID>([^<]+)</instanceID>", xml_content)
